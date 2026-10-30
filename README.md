@@ -74,47 +74,12 @@ react-useeffect-lab/
    ```bash
    npm run dev
    ```
-
 5. Open `http://localhost:5173` in your browser.
 
-## 📌 Example: useEffect with Cleanup (Timer)
+## Live Output
+[Visit Effect](https://khushighediya1406-web.github.io/react-useeffect-lab/)
 
-```jsx
-useEffect(() => {
-  if (!isRunning) return;
 
-  const id = setInterval(() => {
-    setSeconds((prev) => prev + 1);
-  }, 1000);
-
-  return () => clearInterval(id); // cleanup
-}, [isRunning]);
-```
-
-## 📌 Example: API Call
-
-```jsx
-useEffect(() => {
-  const fetchData = async () => {
-    try {
-      const res = await fetch("https://jsonplaceholder.typicode.com/users");
-      const data = await res.json();
-      setUsers(data);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  fetchData();
-}, []);
-```
-
-## 👩‍💻 Author
-
-**Khushi Ghediya**
-GitHub: [@khushighediya1406-web](https://github.com/khushighediya1406-web)
 
 ## 📄 License
 
