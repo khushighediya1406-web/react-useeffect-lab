@@ -42,10 +42,11 @@ A small practice project built with **React + Vite** to understand how the `useE
 react-useeffect-lab/
 ├── public/
 ├── src/
-│   ├── components/
-│   │   ├── Counter.jsx
-│   │   ├── Timer.jsx
-│   │   └── ApiCall.jsx
+│   ├── effectExample/
+│   │   ├── Effect1.jsx
+│   │   ├── Effect2.jsx
+|   |   ├── Effect3.jsx    
+│   │   └── Effect4.jsx
 │   ├── App.jsx
 │   └── main.jsx
 ├── index.html
@@ -80,7 +81,5 @@ react-useeffect-lab/
 [Visit Effect](https://khushighediya1406-web.github.io/react-useeffect-lab/)
 
 
-
 ## 📄 License
-
 This project is for learning purposes.
