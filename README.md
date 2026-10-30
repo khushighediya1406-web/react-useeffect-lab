@@ -1,16 +1,121 @@
-# React + Vite
+# React useEffect Lab ⚛️
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A small practice project built with **React + Vite** to understand how the `useEffect` hook works through simple, hands-on examples.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### 1. Counter
+- Increment, decrement and reset a count
+- Uses `useEffect` to run code whenever the count changes (e.g. update the document title)
+- Shows how the **dependency array** controls when an effect runs
 
-## React Compiler
+### 2. Timer
+- Start, pause and reset a timer that ticks every second
+- Uses `setInterval` inside `useEffect`
+- Demonstrates the **cleanup function** (`clearInterval`) to avoid memory leaks
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 3. API Calling
+- Fetches data from a public API when the component mounts
+- Handles **loading**, **error** and **success** states
+- Uses `useEffect` with an empty dependency array `[]` to fetch only once
 
-## Expanding the Oxlint configuration
+## 🧠 What I Learned
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+| Concept | Where it's used |
+|---|---|
+| `useEffect` without dependencies | Runs on every render |
+| `useEffect` with `[]` | Runs once on mount (API call) |
+| `useEffect` with `[value]` | Runs when `value` changes (Counter) |
+| Cleanup function | Stops the interval (Timer) |
+| Async data fetching | Loading / error handling (API) |
+
+## 🛠️ Tech Stack
+
+- React
+- Vite
+- JavaScript (ES6+)
+- CSS
+
+## 📁 Project Structure
+
+```
+react-useeffect-lab/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── Counter.jsx
+│   │   ├── Timer.jsx
+│   │   └── ApiCall.jsx
+│   ├── App.jsx
+│   └── main.jsx
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+## ⚙️ Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/khushighediya1406-web/react-useeffect-lab.git
+   ```
+
+2. **Go to the project folder**
+   ```bash
+   cd react-useeffect-lab
+   ```
+
+3. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+4. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. Open `http://localhost:5173` in your browser.
+
+## 📌 Example: useEffect with Cleanup (Timer)
+
+```jsx
+useEffect(() => {
+  if (!isRunning) return;
+
+  const id = setInterval(() => {
+    setSeconds((prev) => prev + 1);
+  }, 1000);
+
+  return () => clearInterval(id); // cleanup
+}, [isRunning]);
+```
+
+## 📌 Example: API Call
+
+```jsx
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const res = await fetch("https://jsonplaceholder.typicode.com/users");
+      const data = await res.json();
+      setUsers(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchData();
+}, []);
+```
+
+## 👩‍💻 Author
+
+**Khushi Ghediya**
+GitHub: [@khushighediya1406-web](https://github.com/khushighediya1406-web)
+
+## 📄 License
+
+This project is for learning purposes.
