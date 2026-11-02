@@ -7,7 +7,6 @@ const Effect4 = () => {
         fetch('https://dummyjson.com/todos')
             .then((res) => res.json())
             .then((datas) =>
-                // setData(data.todos)
                 setData(datas)
             )
             .catch((error) => {
@@ -17,13 +16,6 @@ const Effect4 = () => {
     return (
         <>
             <h1>User's Information</h1>
-            {/* {data.map((user) => (
-                <div key={user.id}>
-                    <h2>User Id:{user.userId}</h2>
-                    <p>{user.todo}</p>
-                    <p>{user.completed ? "Completed" : "Not!!"}</p>
-                </div>
-            ))} */}
             {data.todos?.map((item) => (
                 <div key={item.id}>
                     <h2>{item.todo}</h2>
